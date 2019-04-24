@@ -1,5 +1,11 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+<v-container grid-list-md text-xs-center>
+    <v-layout row wrap>
+      <v-flex xs12>
+  <v-textarea
+  v-model="text"
+  ></v-textarea>
+  </v-flex>
+  </v-layout>
+  <v-container>
 </template>

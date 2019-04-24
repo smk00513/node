@@ -4,9 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 
 // view engine setup
@@ -17,11 +14,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use('/api', require('./routes/api'))
 // console.log(path.join(__dirname, '../', 'fe', 'dist'))
 app.use(express.static(path.join(__dirname, '../', 'fe', 'dist')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -36,7 +31,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send({msg : err.message})
 });
 
 module.exports = app;
