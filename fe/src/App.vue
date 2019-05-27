@@ -72,6 +72,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'App',
   data () {
@@ -94,6 +95,11 @@ export default {
           icon: 'face',
           title: 'RestFul',
           to: '/REST'
+        },
+        {
+          icon: 'face',
+          title: 'sign',
+          to: '/sign'
         },
         {
           icon: 'face',

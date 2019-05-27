@@ -3,6 +3,7 @@ var createError = require('http-errors');
 var router = express.Router();
 const User = require('../../../models/users')
 
+
 // router.get('/', function(req, res, next) {
 //   const us = [
 //     {
@@ -21,14 +22,15 @@ const User = require('../../../models/users')
 module.exports = router;
 
   //Restful
-router.get('/', function(req, res, next) {
-  User.find()
-  .then(r => {
-    res.send({success : true, users : r})
-  })
-  .catch(e => {
-    res.send({success : false})
-  })
+  router.get('/', function(req, res, next) {
+
+    User.find()
+      .then(r => {
+        res.send({ success : true, users: r})
+      })
+      .catch(e => {
+        res.send({ success : false})
+      })
 
   // console.log(req.query)
   // console.log(req.body)
@@ -38,16 +40,16 @@ router.get('/', function(req, res, next) {
 
 router.post('/', (req, res, next) => {
 
-  const {name, age} = req.body
-  const u = new User({name, age})
+  const { name, age } = req.body
+  const u = new User({ name, age })
     u.save()
       .then(r => {
-        res.send({success : true, msg : r})
+        res.send({ success: true, msg: r })
       })
       .catch(e => {
-        res.send({success : false, msg : e.message})
+        res.send({ success: false, msg: e.message })
       })
-      
+
   // console.log(req.query)
   // console.log(req.body)
   // res.send({ success: true, msg: 'post ok' })
